@@ -55,9 +55,10 @@ const battleship = () => {
   let oponent;
   // playerOne and playerTwo should have at least one ship for the game to go on.
   while (playerOne.shipCount > 0 && playerTwo.shipCount > 0) {
-    // ask playerOne x and y to strike .
-    let xOneInput = prompt(`${currentPlayer.name} Enter an X value (0 to 3) to strike`);
-    let yOneInput = prompt(`${currentPlayer.name} Enter an Y value (0 to 3) to strike`);
+    // ask currentPlayer x and y to strike .
+    let xInput = prompt(`${currentPlayer.name.toUpperCase()} Enter an X value (0 to 3) to strike`);
+    let yInput = prompt(`${currentPlayer.name.toUpperCase()} Enter an Y value (0 to 3) to strike`);
+    //declaring current and oponent players relations
     if (currentPlayer === playerOne) {
       oponent = playerTwo;
     } else {
@@ -65,13 +66,14 @@ const battleship = () => {
     }
     // Checking oponent gameBoard, if it has ships, convert 1 to 0 and decrease quantity for cycle. 
     // Create alerts for each situation
-    if (oponent.gameBoard[xOneInput][yOneInput] === 1) {
-      oponent.gameBoard[xOneInput][yOneInput] = 0;
+    if (oponent.gameBoard[xInput][yInput] === 1) {
+      oponent.gameBoard[xInput][yInput] = 0;
       oponent.shipCount--;
       alert('Hit');
     } else {
       alert('Miss');
     }
+    //switching players
     if (currentPlayer === playerOne) {
       currentPlayer = playerTwo;
     } else {
@@ -80,9 +82,9 @@ const battleship = () => {
   }
   //when shipCount is 0 return the oponent is the winner and game over
   if (playerTwo.shipCount === 0) {
-    return (`The winner is ${playerOne.name}!`)
+    return (`The winner is ${playerOne.name.toUpperCase()}!`)
   } else {
-    return (`The winner is ${playerTwo.name}!`)
+    return (`The winner is ${playerTwo.name.toUpperCase()}!`)
   }
 }   
 const gameResult = battleship()
